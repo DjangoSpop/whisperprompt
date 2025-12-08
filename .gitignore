@@ -1,0 +1,32 @@
+# Backend
+backend/__pycache__/
+backend/*.py[cod]
+backend/db.sqlite3
+backend/.env
+backend/media/
+backend/staticfiles/
+
+# Frontend (Flutter - to be added)
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.packages
+mobile/.pub-cache/
+mobile/.pub/
+mobile/build/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
