@@ -1,8 +1,8 @@
-# AI Whisperer - MVP Backend
+# AI Whisperer
 
-> **"No AI needed to craft AI prompts"**
+> **"Speak naturally → Get a professional, AI-ready prompt instantly."**
 
-AI Whisperer is a voice-powered prompt generation tool that uses templates and smart variable extraction instead of expensive LLM calls.
+AI Whisperer is a voice-powered prompt intelligence engine that transforms natural speech into optimized, intent-aware prompts in near-real-time. No typing needed—just speak, and get multiple professionally-crafted prompt variants instantly.
 
 ## 🎯 Key Features
 
@@ -345,6 +345,106 @@ REDIS_URL=redis://...
 OPENAI_API_KEY=sk-...
 USE_S3=True
 # ... other R2 config
+```
+
+## 📱 Flutter Mobile App
+
+The Flutter mobile app (`mobile/` directory) provides iOS and Android interfaces with advanced intelligence features.
+
+### Setup
+
+```bash
+cd mobile
+
+# Install dependencies
+flutter pub get
+
+# Generate JSON serialization code
+flutter pub run build_runner build --delete-conflicting-outputs
+
+# Run on device/emulator
+flutter run
+```
+
+### Sprint 2 Features (Latest)
+
+**Intelligence Layer:**
+- Intent detection (coding, writing, business, education, marketing)
+- Tone analysis (formal, casual, urgent, creative, technical)
+- Output type detection (code, explanation, steps, summary, list, document)
+
+**Prompt Enhancement Engine:**
+- 5 enhancement strategies running in parallel (< 200ms target)
+  - **Concise**: Remove filler, compress essentials
+  - **Expert**: Professional terminology and context
+  - **Stepwise**: Numbered sequential instructions
+  - **Creative**: Imaginative and open-ended
+  - **Technical**: Precision specs and requirements
+- Quality scoring and ranking
+- Voice command refinement ("make it shorter", "more technical")
+
+**Session Intelligence:**
+- Prompt versioning and evolution tracking
+- Diff comparison between versions
+- Session memory and smart tagging
+- Resume and clone capabilities
+
+**Error Handling:**
+- Production-grade error taxonomy
+- User-friendly error messages
+- Recovery actions for all error types
+- Global error handling with analytics hooks
+
+### Architecture
+
+```
+mobile/lib/
+├── intelligence/          # AI intelligence layer (NEW)
+│   ├── models/           # Intent, Enhancement, Versioning models
+│   ├── strategies/       # 5 enhancement strategies
+│   ├── intent_detector.dart
+│   └── prompt_enhancer.dart
+├── providers/            # Riverpod state management (NEW)
+│   ├── core/            # Service providers
+│   └── intelligence/    # Intelligence providers
+├── core/
+│   └── errors/          # Error handling system (NEW)
+├── services/            # API, Voice, TTS, Storage
+├── models/              # Data models
+├── screens/             # UI screens
+└── config/              # App configuration
+
+State Management: Riverpod
+API Client: Dio + Retrofit
+Storage: Hive + Secure Storage
+Voice: record package
+TTS: flutter_tts
+```
+
+### Performance Targets
+
+- Voice recording start: < 100ms
+- Enhancement generation: < 200ms
+- Session creation to first prompt: < 3 seconds
+- UI state updates: < 16ms (60fps)
+
+### Development
+
+```bash
+# Format code
+flutter format .
+
+# Analyze code
+flutter analyze
+
+# Run tests
+flutter test
+
+# Build APK (Android)
+flutter build apk --release
+
+# Build IPA (iOS)
+flutter build ios --release
 ```
 
 ## 📝 License
